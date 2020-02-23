@@ -13,5 +13,7 @@ public class ProxyTest {
 		//AccountServiceImpl accountServiceImpl = new AccountServiceImpl();
 		double balance = proxy.getBalance("2209", "Close");
 		System.out.println(balance);
+		boolean status = proxy.closeAccount("something");
+		System.out.println(status);
 	}
 }

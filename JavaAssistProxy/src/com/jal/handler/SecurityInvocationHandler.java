@@ -3,19 +3,22 @@ package com.jal.handler;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
+import com.jal.services.AccountServiceImpl;
+
 public class SecurityInvocationHandler implements InvocationHandler {
 
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-		Class clazz = null;
-		Object obj = null;
+//		Class clazz = null;
+//		clazz = proxy.getClass();
+//		Object obj = null;
 		if (method.getName().equals("getBalance")) {
 			System.out.println("Security Verified");
-			method.invoke(proxy, args);
-			clazz.getClass().isInstance(obj);
-			return obj;
+			/*
+			 * method.invoke(proxy, args); proxy.getClass().isInstance(obj); return obj;
+			 */
 		}
-		return null;
+		return method.invoke(new AccountServiceImpl() , args);
 	}
 
 }
